@@ -1,0 +1,48 @@
+@using bookish.Models.View;
+@model BookViewModel;
+
+@{
+    ViewData["Title"] = "View all books";
+}
+
+<div>
+    <table>
+        <thead>
+            <tr>@*  row1 *@
+                <th scope="col">ISBN</th>
+                <th scope="col">Image</th>
+                <th scope="col">Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">Year Of Publication</th>
+                <th scope="col">Publisher</th>
+                <th scope="col">More</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @{
+                foreach(var book in Model.Books)
+                {
+                    <tr>
+                        <td>@book.ISBN</td>
+                        <td><img src="@book.ImageURLS" alt="Image of book @book.Title"></td>
+                        <td>@book.Title</td>
+                        <td>@book.Author</td>
+                        <td>@book.YearOfPublication</td>
+                        <td>@book.Publisher</td>
+                        <td>
+                            <a class="btn btn-dark btn-sm" asp-area="" asp-controller="Book" asp-action="AddCopy" asp-route-id=@book.Id> Add Copy</a>
+                        </td>
+                    </tr>  
+                }
+            }
+
+        </tbody>
+
+    </table>
+
+    <form action="Post">
+        <button type="button" class="btn btn-link">Next Page</button>
+    </form>
+
+</div>
