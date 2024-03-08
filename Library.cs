@@ -21,10 +21,7 @@ public class Library: DbContext
 
     public DbSet<Member> Members {get; set; } = null!;
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseNpgsql("Host=localhost; Port=5432; Database=bookish; Username=bookish; Password=bookish;");
-    }
+    public Library(DbContextOptions<Library> options) : base(options) {}
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

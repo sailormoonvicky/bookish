@@ -1,11 +1,13 @@
 using bookish;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using NLog.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddSingleton<Library>();
+builder.Services.AddDbContext<Library>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("MyDatabase")));
 
 var app = builder.Build();
 
@@ -13,7 +15,7 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+
     app.UseHsts();
 }
 
