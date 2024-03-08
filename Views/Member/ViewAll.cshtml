@@ -6,8 +6,8 @@
 }
 
 <div>
-    <table>
-        <thead>
+    <table class="table">
+        <thead class="thead-dark" >
             <tr>@*  row1 *@
                 <th scope="col">ID</th>
                 <th scope="col">Username</th>
@@ -22,9 +22,9 @@
                 foreach(var member in Model.Members)
                 {
                     <tr>
-                        <td>
+                        <th scope="row">
                             <a class="btn btn-link" asp-area="" asp-controller="Member" asp-action="MemberDetail" asp-route-id=@member.Id> @member.Id</a>
-                        </td>
+                        </th>
                         <td>
                             <a class="btn btn-link" asp-area="" asp-controller="Member" asp-action="MemberDetail" asp-route-id=@member.Id> @member.UserName</a>
                         </td>

@@ -6,9 +6,10 @@
 }
 
 <div>
-    <table>
-        <thead>
-            <tr>@*  row1 *@
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
                 <th scope="col">ISBN</th>
                 <th scope="col">Image</th>
                 <th scope="col">Title</th>
@@ -24,6 +25,9 @@
                 foreach(var book in Model.Books)
                 {
                     <tr>
+                        <th scope="col">
+                            <a class="btn btn-link" asp-area="" asp-controller="Book" asp-action="BookDetail" asp-route-id=@book.Id> @book.Id</a>
+                        </th>                        
                         <td>
                             <a class="btn btn-link" asp-area="" asp-controller="Book" asp-action="BookDetail" asp-route-id=@book.Id> @book.ISBN</a>
                         </td>
