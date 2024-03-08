@@ -1,0 +1,42 @@
+@using bookish.Models.Data;
+@using bookish.Enums;
+@model Book;
+
+@{
+    ViewData["Title"] = "@Model.Title";
+}
+
+<div>
+    <div>
+        <img src="@Model.ImageURLL" alt="Book Cover Image of @Model.Title">
+        <h2>Title:@Model.Title</h2>
+        <h3>By @Model.Author</h3>
+        <p>Current Number of Copies: @Model.Copies.Count()</p>
+        <a class="btn btn-dark btn-small" asp-controller="Copy" asp-action="AddCopy" asp-route-id="@Model.Id">Add New Copy</a>
+    </div>
+
+    <div>
+        <table>
+            <tr>
+                <th scope="col">Copy ID</th>
+                <th scope="col">Copy Condition</th>
+                <th scope="col">Copy Borrowed</th>
+                <th scope="col">Update Copy Condition</th>
+            </tr>
+
+            @{
+                foreach(var copy in Model.Copies)
+                {
+                    <tr>
+                        <td>@copy.Id</td>
+                        <td>@copy.Condition</td>
+                        <td>@copy.HasLiveLoan</td>
+                        <td>Update Copy Condition</td>
+                    </tr>
+                }
+            }
+
+
+        </table>
+    </div>
+</div>

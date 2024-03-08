@@ -2,6 +2,7 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using bookish.Models.Data;
 using bookish.Models.View;
+using Microsoft.EntityFrameworkCore;
 
 namespace bookish.Controllers;
 
@@ -22,24 +23,33 @@ public class BookController : Controller
         return View();
     }
 
-    [HttpGet]
-    public IActionResult ViewAll([FromForm] int pageNum)
+
+    public IActionResult ViewAll( int pageNum = 0)
     {
         var books = _library.Books.ToList();
-        var pageSize = 10;
-        var viewModel = books.Skip(pageSize*pageNum).Take(pageSize).ToList();
+        var pageSize = 15;
+        var count = _library.Books.Count();
 
+        var viewModel = books.Skip(pageSize*pageNum).Take(pageSize).ToList();
         var bookData = new BookViewModel
         {
-            Books = books,
+            Books = viewModel,
         };
+        ViewBag.MaxPage = (count/pageSize) - (count % pageSize==0 ? 1: 0);
+        ViewBag.Page = pageNum;
+
         return View(bookData);
     }
 
-    public IActionResult AddCopy([FromRoute] int id)
-
+    public IActionResult BookDetail([FromRoute] int id)
     {
-        return View();
+        var matchingBook = _library.Books.Include(book => book.Copies)
+                                        .SingleOrDefault(book=> book.Id == id);
+        if(matchingBook == null)
+        {
+            return NotFound();
+        }
+        return View(matchingBook);
     }
 
 

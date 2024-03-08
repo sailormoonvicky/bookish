@@ -12,7 +12,7 @@ using bookish;
 namespace bookish.Migrations
 {
     [DbContext(typeof(Library))]
-    [Migration("20240307225117_Initial")]
+    [Migration("20240308105216_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -4821,16 +4821,11 @@ namespace bookish.Migrations
                     b.Property<int>("MemberId")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("MemberId1")
-                        .HasColumnType("integer");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CopyId");
 
                     b.HasIndex("MemberId");
-
-                    b.HasIndex("MemberId1");
 
                     b.ToTable("Loans");
 
@@ -4839,25 +4834,25 @@ namespace bookish.Migrations
                         {
                             Id = 1,
                             CopyId = 5,
-                            DateBorrowed = new DateOnly(2024, 2, 16),
-                            DateDueBack = new DateOnly(2024, 3, 1),
-                            DateReturned = new DateOnly(2024, 2, 28),
+                            DateBorrowed = new DateOnly(2024, 2, 17),
+                            DateDueBack = new DateOnly(2024, 3, 2),
+                            DateReturned = new DateOnly(2024, 2, 29),
                             MemberId = 1
                         },
                         new
                         {
                             Id = 3,
                             CopyId = 7,
-                            DateBorrowed = new DateOnly(2024, 3, 3),
-                            DateDueBack = new DateOnly(2024, 3, 17),
+                            DateBorrowed = new DateOnly(2024, 3, 4),
+                            DateDueBack = new DateOnly(2024, 3, 18),
                             MemberId = 3
                         },
                         new
                         {
                             Id = 2,
                             CopyId = 10,
-                            DateBorrowed = new DateOnly(2024, 3, 2),
-                            DateDueBack = new DateOnly(2024, 3, 16),
+                            DateBorrowed = new DateOnly(2024, 3, 3),
+                            DateDueBack = new DateOnly(2024, 3, 17),
                             MemberId = 2
                         });
                 });
@@ -4921,10 +4916,6 @@ namespace bookish.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("bookish.Models.Data.Member", null)
-                        .WithMany("ActiveLoans")
-                        .HasForeignKey("MemberId1");
-
                     b.Navigation("Copy");
 
                     b.Navigation("Member");
@@ -4942,8 +4933,6 @@ namespace bookish.Migrations
 
             modelBuilder.Entity("bookish.Models.Data.Member", b =>
                 {
-                    b.Navigation("ActiveLoans");
-
                     b.Navigation("LoanHistory");
                 });
 #pragma warning restore 612, 618

@@ -24,14 +24,18 @@
                 foreach(var book in Model.Books)
                 {
                     <tr>
-                        <td>@book.ISBN</td>
+                        <td>
+                            <a class="btn btn-link" asp-area="" asp-controller="Book" asp-action="BookDetail" asp-route-id=@book.Id> @book.ISBN</a>
+                        </td>
                         <td><img src="@book.ImageURLS" alt="Image of book @book.Title"></td>
-                        <td>@book.Title</td>
+                        <td>
+                            <a class="btn btn-link" asp-area="" asp-controller="Book" asp-action="BookDetail" asp-route-id=@book.Id> @book.Title</a>
+                        </td>
                         <td>@book.Author</td>
                         <td>@book.YearOfPublication</td>
                         <td>@book.Publisher</td>
                         <td>
-                            <a class="btn btn-dark btn-sm" asp-area="" asp-controller="Book" asp-action="AddCopy" asp-route-id=@book.Id> Add Copy</a>
+                            <a class="btn btn-dark btn-sm" asp-area="" asp-controller="Copy" asp-action="AddCopy" asp-route-id=@book.Id> Add Copy</a>
                         </td>
                     </tr>  
                 }
@@ -40,9 +44,23 @@
         </tbody>
 
     </table>
+    <div>
+        
+        @if (ViewBag.Page > 0)
+        {
+            <a href="@Url.Action("ViewAll", new { pageNum = ViewBag.Page - 1 })" 
+            class="btn btn-default">
+                &laquo; Prev
+            </a>
+        }
+        @if (ViewBag.Page < ViewBag.MaxPage)
+        {
+            <a asp-controller="Book" asp-action="ViewAll" asp-route-pageNum="@(ViewBag.Page + 1)"
+            class="btn btn-default">
+                Next &raquo;
+            </a>
+        }
 
-    <form action="Post">
-        <button type="button" class="btn btn-link">Next Page</button>
-    </form>
+    </div>
 
 </div>

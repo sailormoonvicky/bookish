@@ -106,3 +106,4 @@ C:\TechSwitch\bookish\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces
 C:\TechSwitch\bookish\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\TechSwitch\bookish\obj\Debug\net8.0\bookish.csproj.Up2Date
 C:\TechSwitch\bookish\bin\Debug\net8.0\nlog.config
+C:\TechSwitch\bookish\obj\Debug\net8.0\bookish.sourcelink.json

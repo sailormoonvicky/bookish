@@ -77,8 +77,7 @@ namespace bookish.Migrations
                     CopyId = table.Column<int>(type: "integer", nullable: false),
                     DateBorrowed = table.Column<DateOnly>(type: "date", nullable: false),
                     DateDueBack = table.Column<DateOnly>(type: "date", nullable: false),
-                    DateReturned = table.Column<DateOnly>(type: "date", nullable: true),
-                    MemberId1 = table.Column<int>(type: "integer", nullable: true)
+                    DateReturned = table.Column<DateOnly>(type: "date", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -95,11 +94,6 @@ namespace bookish.Migrations
                         principalTable: "Members",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Loans_Members_MemberId1",
-                        column: x => x.MemberId1,
-                        principalTable: "Members",
-                        principalColumn: "Id");
                 });
 
             migrationBuilder.InsertData(
@@ -716,12 +710,12 @@ namespace bookish.Migrations
 
             migrationBuilder.InsertData(
                 table: "Loans",
-                columns: new[] { "Id", "CopyId", "DateBorrowed", "DateDueBack", "DateReturned", "MemberId", "MemberId1" },
+                columns: new[] { "Id", "CopyId", "DateBorrowed", "DateDueBack", "DateReturned", "MemberId" },
                 values: new object[,]
                 {
-                    { 1, 5, new DateOnly(2024, 2, 16), new DateOnly(2024, 3, 1), new DateOnly(2024, 2, 28), 1, null },
-                    { 2, 10, new DateOnly(2024, 3, 2), new DateOnly(2024, 3, 16), null, 2, null },
-                    { 3, 7, new DateOnly(2024, 3, 3), new DateOnly(2024, 3, 17), null, 3, null }
+                    { 1, 5, new DateOnly(2024, 2, 17), new DateOnly(2024, 3, 2), new DateOnly(2024, 2, 29), 1 },
+                    { 2, 10, new DateOnly(2024, 3, 3), new DateOnly(2024, 3, 17), null, 2 },
+                    { 3, 7, new DateOnly(2024, 3, 4), new DateOnly(2024, 3, 18), null, 3 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -738,11 +732,6 @@ namespace bookish.Migrations
                 name: "IX_Loans_MemberId",
                 table: "Loans",
                 column: "MemberId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Loans_MemberId1",
-                table: "Loans",
-                column: "MemberId1");
         }
 
         /// <inheritdoc />

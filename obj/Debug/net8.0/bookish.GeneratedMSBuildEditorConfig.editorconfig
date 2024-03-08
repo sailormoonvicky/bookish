@@ -18,8 +18,8 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\TechSwitch\bookish
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/TechSwitch/bookish/Views/Book/AddCopy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1xBZGRDb3B5LmNzaHRtbA==
+[C:/TechSwitch/bookish/Views/Book/BookDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1xCb29rRGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/TechSwitch/bookish/Views/Book/Navigation.cshtml]
@@ -30,12 +30,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1xWaWV3QWxsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/TechSwitch/bookish/Views/Copy/AddCopy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29weVxBZGRDb3B5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/TechSwitch/bookish/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/TechSwitch/bookish/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/TechSwitch/bookish/Views/Member/MemberDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXE1lbWJlckRldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/TechSwitch/bookish/Views/Member/Navigation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXE5hdmlnYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/TechSwitch/bookish/Views/Member/ViewAll.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXFZpZXdBbGwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/TechSwitch/bookish/Views/Shared/Error.cshtml]

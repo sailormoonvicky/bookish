@@ -1,0 +1,43 @@
+@using bookish.Models.Data;
+@model Member;
+
+@{
+    ViewData["Title"] = "@Model.Username";
+}
+
+<div>
+    <div>
+        <h2>@Model.UserName</h2>
+        <a class="btn btn-dark btn-small" asp-controller="Member" asp-action="MemberDetail" asp-route-id="@Model.Id">Edit</a>
+    </div>
+
+    <div>
+        <h3>Loan History of @Model.UserName</h3>
+        <table>
+            <tr>
+                <th scope="col">Loan ID</th>
+                <th scope="col">Book Title</th>
+                @* <th scope="col">Copy ID</th> *@
+                <th scope="col">Start Date </th>
+                <th scope="col">Due Return Date </th>
+                <th scope="col">Return Date</th>
+            </tr>
+
+            @{
+                foreach(var loan in Model.LoanHistory)
+                {
+                    <tr>
+                        <td>@loan.Id</td>
+                        <td>@loan.Copy.Book.Title</td>
+                        @* <td>@loan.CopyId</td> *@
+                        <td>@loan.DateBorrowed</td>
+                        <td>@loan.DateDueBack</td>
+                        <td>@loan.DateReturned</td>
+                    </tr>
+                }
+            }
+
+
+        </table>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+@using bookish.Models.View;
+@model MemberViewModel;
+
+@{
+    ViewData["Title"] = "View all members";
+}
+
+<div>
+    <table>
+        <thead>
+            <tr>@*  row1 *@
+                <th scope="col">ID</th>
+                <th scope="col">Username</th>
+                @* <th scope="col">Active Loans</th> *@
+                <th scope="col">Detail</th>
+                <th scope="col">Edit</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @{
+                foreach(var member in Model.Members)
+                {
+                    <tr>
+                        <td>
+                            <a class="btn btn-link" asp-area="" asp-controller="Member" asp-action="MemberDetail" asp-route-id=@member.Id> @member.Id</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-link" asp-area="" asp-controller="Member" asp-action="MemberDetail" asp-route-id=@member.Id> @member.UserName</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-dark btn-sm" asp-area="" asp-controller="Member" asp-action="MemberDetail" asp-route-id=@member.Id> Detail</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-dark btn-sm" asp-area="" asp-controller="Member" asp-action="MemberDetail" asp-route-id=@member.Id> Edit</a>
+                        </td>
+                    </tr>  
+                }
+            }
+
+        </tbody>
+
+    </table>
+    <div>
+        
+        @if (ViewBag.Page > 0)
+        {
+            <a href="@Url.Action("ViewAll", new { pageNum = ViewBag.Page - 1 })" 
+            class="btn btn-default">
+                &laquo; Prev
+            </a>
+        }
+        @if (ViewBag.Page < ViewBag.MaxPage)
+        {
+            <a asp-controller="Book" asp-action="ViewAll" asp-route-pageNum="@(ViewBag.Page + 1)"
+            class="btn btn-default">
+                Next &raquo;
+            </a>
+        }
+
+    </div>
+
+</div>

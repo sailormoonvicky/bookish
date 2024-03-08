@@ -1,0 +1,34 @@
+@using bookish.Models.Data;
+@using bookish.Enums;
+@model Book;
+
+@{
+    ViewData["Title"] = "Add Copy";
+}
+
+<div>
+    <div>
+        <h1>Add New Copy For: </h1>
+        <img src="@Model.ImageURLL" alt="Book Cover Image of @Model.Title">
+        <h2>Title:@Model.Title</h2>
+        <h3>By @Model.Author</h3>
+        <p>Current Number of Copies: @Model.Copies.Count()</p>
+    </div>
+
+    <div>
+        <form method="post">
+            <p Condition>Select the condition of the new copy:</p>
+            @{
+                foreach (var condition in Enum.GetValues<Condition>())
+                {
+                    <input type="radio" id="@condition" name="Condition" value="@condition">
+                    <label for="@condition">@condition</label><br>
+                }
+            }
+            <br>
+            <button class="btn btn-primary btn-sm" type="submit">Submit</button>
+            <a class="btn btn-primary btn-sm" asp-controller="Book" asp-action="BookDetail" asp-route-id=@Model.Id>Back to Book Detail</a>
+        </form>
+    </div>
+
+</div>
